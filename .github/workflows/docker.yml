@@ -3,7 +3,8 @@ name: Docker-MASTER
 on:
   push:
     branches:
-      - 'master'
+#      - 'master'
+      - 'multiarch'
   pull_request:
     branches:
       - 'master'
@@ -34,4 +35,4 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: agpenton/jenkins-docker:latest
+          tags: agpenton/jenkins-docker:mutli-arch-latest
