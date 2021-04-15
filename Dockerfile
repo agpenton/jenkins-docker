@@ -62,7 +62,7 @@ RUN apt update && apt -y install apt-transport-https ca-certificates curl gnupg2
 
 # jenkins version being bundled in this docker image
 ARG JENKINS_VERSION
-ENV JENKINS_VERSION ${JENKINS_VERSION:-2.235.4}
+ENV JENKINS_VERSION ${JENKINS_VERSION:-2.277.2}
 
 # jenkins.war checksum, download will be validated using it
 ARG JENKINS_SHA=e5688a8f07cc3d79ba3afa3cab367d083dd90daab77cebd461ba8e83a1e3c177
