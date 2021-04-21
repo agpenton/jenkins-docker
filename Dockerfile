@@ -54,14 +54,14 @@ RUN curl -fsSL https://github.com/krallin/tini/releases/download/${TINI_VERSION}
   && rm -rf /sbin/tini.asc /root/.gnupg \
   && chmod +x /sbin/tini
 
-RUN apt update && apt -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common make && \
+RUN apt update && apt -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common make python3-pip && \
     curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - && \
     add-apt-repository "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") $(lsb_release -cs) stable" && \
     apt-get update && apt-get -y install docker-ce && usermod -aG docker jenkins && apt autoclean -y \
     && rm -Rf /var/cache/apt/archives/* /var/cache/apt/archives/partial/* /var/lib/apt/lists/partial/* /var/cache/apt/pkgcache.bin /var/cache/apt/srcpkgcache.bin && apt clean -y
 
-RUN curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && chmod 777 /usr/local/bin/docker-compose && ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-    
+RUN pip install docker-compose
+
 # jenkins version being bundled in this docker image
 ARG JENKINS_VERSION
 ENV JENKINS_VERSION ${JENKINS_VERSION:-2.277.3}
