@@ -60,8 +60,7 @@ RUN apt update && apt -y install apt-transport-https ca-certificates curl gnupg2
     apt-get update && apt-get -y install docker-ce && usermod -aG docker jenkins && apt autoclean -y \
     && rm -Rf /var/cache/apt/archives/* /var/cache/apt/archives/partial/* /var/lib/apt/lists/partial/* /var/cache/apt/pkgcache.bin /var/cache/apt/srcpkgcache.bin && apt clean -y
 
-RUN curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
-    chmod +x /usr/local/bin/docker-compose && ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+RUN curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && chmod 777 /usr/local/bin/docker-compose && ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
     
 # jenkins version being bundled in this docker image
 ARG JENKINS_VERSION
