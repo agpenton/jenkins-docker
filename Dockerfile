@@ -54,7 +54,7 @@ RUN curl -fsSL https://github.com/krallin/tini/releases/download/${TINI_VERSION}
   && rm -rf /sbin/tini.asc /root/.gnupg \
   && chmod +x /sbin/tini
 
-RUN apt update && apt -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common && \
+RUN apt update && apt -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common make && \
     curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - && \
     add-apt-repository "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") $(lsb_release -cs) stable" && \
     apt-get update && apt-get -y install docker-ce && usermod -aG docker jenkins && apt autoclean -y \
@@ -62,10 +62,10 @@ RUN apt update && apt -y install apt-transport-https ca-certificates curl gnupg2
 
 # jenkins version being bundled in this docker image
 ARG JENKINS_VERSION
-ENV JENKINS_VERSION ${JENKINS_VERSION:-2.277.2}
+ENV JENKINS_VERSION ${JENKINS_VERSION:-2.277.3}
 
 # jenkins.war checksum, download will be validated using it
-ARG JENKINS_SHA=423d506cbfccf677a8f8112e170e611d65a49244b0ca87d2b134dd3ecb2e9b22
+ARG JENKINS_SHA=3e22c7e8cd7c8ee1e92cbaa8d0d303a7b53e07bc2a152ddc66f8ce55caea91ab
 
 # Can be used to customize where jenkins.war get downloaded from
 ARG JENKINS_URL=https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${JENKINS_VERSION}/jenkins-war-${JENKINS_VERSION}.war
