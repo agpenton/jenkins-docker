@@ -60,7 +60,7 @@ RUN apt update && apt -y install apt-transport-https ca-certificates curl gnupg2
     apt-get update && apt-get -y install docker-ce && usermod -aG docker jenkins && apt autoclean -y \
     && rm -Rf /var/cache/apt/archives/* /var/cache/apt/archives/partial/* /var/lib/apt/lists/partial/* /var/cache/apt/pkgcache.bin /var/cache/apt/srcpkgcache.bin && apt clean -y
 
-RUN pip install docker-compose
+RUN pip3 install docker-compose
 
 # jenkins version being bundled in this docker image
 ARG JENKINS_VERSION
