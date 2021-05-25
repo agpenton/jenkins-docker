@@ -64,10 +64,10 @@ RUN pip3 install pip --upgrade && pip3 install docker-compose
 
 # jenkins version being bundled in this docker image
 ARG JENKINS_VERSION
-ENV JENKINS_VERSION ${JENKINS_VERSION:-2.277.3}
+ENV JENKINS_VERSION ${JENKINS_VERSION:-2.277.4}
 
 # jenkins.war checksum, download will be validated using it
-ARG JENKINS_SHA=3e22c7e8cd7c8ee1e92cbaa8d0d303a7b53e07bc2a152ddc66f8ce55caea91ab
+ARG JENKINS_SHA=26b278064393befa74f543d23050ca08589a6c14207cac06a0fbf6994113e7a7
 
 # Can be used to customize where jenkins.war get downloaded from
 ARG JENKINS_URL=https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${JENKINS_VERSION}/jenkins-war-${JENKINS_VERSION}.war
