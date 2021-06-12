@@ -35,7 +35,4 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: 
-            agpenton/jenkins-docker:mutli-arch-latest
-            agpenton/jenkins-docker:v1
-            agpenton/jenkins-docker:v1-arm
+          tags: agpenton/jenkins-docker:mutli-arch-latest, agpenton/jenkins-docker:v1, agpenton/jenkins-docker:v1-arm
